@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t fhassoumi/react-docker -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true fhassoumi/react-docker npm run test
